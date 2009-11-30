@@ -1,0 +1,8 @@
+msgpack.lo: /home/developer/test/msgpack/php_msgpack/msgpack.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/developer/test/msgpack/php_msgpack $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/developer/test/msgpack/php_msgpack/msgpack.c -o msgpack.lo 
+$(phplibdir)/msgpack.la: ./msgpack.la
+	$(LIBTOOL) --mode=install cp ./msgpack.la $(phplibdir)
+
+./msgpack.la: $(shared_objects_msgpack) $(MSGPACK_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_msgpack) $(MSGPACK_SHARED_LIBADD)
+
