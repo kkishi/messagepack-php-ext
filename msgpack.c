@@ -381,8 +381,8 @@ PHP_MSGPACK_API void msgpack_pack_array_hash(smart_str *pk, zval **val TSRMLS_DC
 								tmp_ht->nApplyCount--;
 							continue;
 						}
-						msgpack_pack_raw(pk, key_len-1 TSRMLS_CC);
-						msgpack_pack_raw_body(pk, key, key_len-1 TSRMLS_CC);
+						msgpack_pack_raw(pk, key_len-1);
+						msgpack_pack_raw_body(pk, key, key_len-1);
 						php_msgpack_pack(pk, *data TSRMLS_CC);
 					}
 					else{
